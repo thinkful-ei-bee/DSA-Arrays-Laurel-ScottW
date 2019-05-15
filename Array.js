@@ -97,8 +97,79 @@ function main(){
 
   //4.
   //
-  
+  console.log(arr.get(0));
+  arr.pop();
+  arr.pop();
+  arr.pop();
+  arr.push('tauhida');
+
+  console.log(arr.get(0));
+  //result: NaN
+  //float 64 Array can't handle strings?
+  //when capacity is met, _resize moves the array to a new ptr with a greater capacity,
+  //specifically length +1 *3
+  //It then marks the old ptr as available
+
+  //experiment with booleans, found that booleans are stored and can be retrieved as 0/1
+  // arr.pop();
+  // arr.push(false);
+  // console.log(arr.get(0));
+  // arr.pop();
+
   console.log(arr);
 }
-
 main();
+
+//5.
+
+function urlIfy(string) {
+  return string.split(' ').join('%20');
+}
+
+console.log(urlIfy('tauhida parveen'));
+
+
+//6.
+
+function filterArray(array) {
+  const res = [];
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] >= 5) {
+      res.push(array[i]);
+    }
+  }
+  return res;
+}
+
+console.log(filterArray([1,2,3,4,5,6,7,8,9]));
+
+
+//7.
+
+function maxSum(array) {
+  let forward = 0;
+  let backward = 0;
+  for (let i = 0; i < array.length; i++) {
+    let fRes = 0;
+    array.slice(i,array.length).map(item => fRes += item);
+    if (fRes > forward) {
+      forward = fRes;
+    }
+  }
+  for (let i = array.length; i > 0; i--) {
+    let bRes = 0;
+    array.slice(0,i).map(item => bRes += item);
+    if (bRes > backward) {
+      backward = bRes;
+    }
+  }
+  return forward > backward ? forward : backward;
+}
+
+console.log(maxSum([4,6,-3,5,-2,1]));
+
+//[-1,-2,-3,4,5]
+//3, 9
+
+
+
