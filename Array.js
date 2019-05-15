@@ -168,8 +168,68 @@ function maxSum(array) {
 
 console.log(maxSum([4,6,-3,5,-2,1]));
 
-//[-1,-2,-3,4,5]
-//3, 9
+
+//8.
+
+// function mergeArrays(array1, array2) {
+//   const newArray = [...array1, ...array2];
+//   const bigArray = [];
+//   newArray.map(item => {
+//     if (item > 9) {
+//       bigArray.push(item);
+//     }
+//   });
+//   const smallArray = newArray.filter(item => item <= 9);
+//   return [...smallArray.sort(), ...bigArray.sort()];
+// }
+
+// console.log(mergeArrays([1, 3, 6, 8, 11],[2, 3, 5, 8, 9, 100]));
+    
+
+// function mergeArrays(array1, array2, res=[]) {
+//   const combo = [...array1, ...array2];
+//   if (combo.length === 0) {
+//     return res;
+//   }
+//   let min = Infinity;
+//   combo.map(num => {
+//     if (num < min) {
+//       min = num;
+//     }
+//   });
+//   res.push(min);
+//   newCombo = combo.filter(num => num !==)
+
+//   //loop through combo
+//   //add smallest element from combo to res
+//   //remove smallest element from combo = newcombo
+
+//   mergeArrays(newCombo, [], res);
+// }
+
+function mergeArrays(array1, array2) {
+  const combo = [...array1, ...array2];
+  return combo.sort(function(a, b){return a - b;});
+}
+console.log(mergeArrays([1, 3, 6, 8, 11],[2, 3, 5, 8, 9, 10]));
+
+
+//9.
+
+function remChar(string, exclude) {
+  console.log(string);
+  console.log(exclude);
+  
+  if (!exclude.length) {
+    return string;
+  }
+
+  let re = new RegExp(exclude[0], 'g');
+
+  remChar(string.replace(re, ''), exclude.slice(1));
+}
+
+console.log(remChar('Battle of the Vowels: Hawaii vs. Grozny', 'aeiou'));
 
 
 
