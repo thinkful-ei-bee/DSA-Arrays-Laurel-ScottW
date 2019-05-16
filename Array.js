@@ -217,8 +217,6 @@ console.log(mergeArrays([1, 3, 6, 8, 11],[2, 3, 5, 8, 9, 10]));
 //9.
 
 function remChar(string, exclude) {
-  console.log(string);
-  console.log(exclude);
   
   if (!exclude.length) {
     return string;
@@ -226,7 +224,7 @@ function remChar(string, exclude) {
 
   let re = new RegExp(exclude[0], 'g');
 
-  remChar(string.replace(re, ''), exclude.slice(1));
+  return remChar(string.replace(re, ''), exclude.slice(1));
 }
 
 console.log(remChar('Battle of the Vowels: Hawaii vs. Grozny', 'aeiou'));
